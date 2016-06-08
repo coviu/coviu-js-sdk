@@ -1,4 +1,4 @@
-coviu-js-sdk - The official Coviu API Javascipt client library
+coviu-js-sdk - Top level coviu api javascript client library
 ==============================================================
 
 
