@@ -1,6 +1,6 @@
 {
   "name": "coviu-js-sdk",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Top level coviu api javascript client library",
   "main": "index.js",
   "scripts": {
