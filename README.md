@@ -65,6 +65,9 @@ Example output
 }
 ```
 
+`coviu.sessions.*` is a collection of functions that build requests that can be run against the api. In order to run the
+request, the `.run()` method must be called, which returns a promise of the result.
+
 It's important to notice that the string format for start_time and end_time is RFC-1123, which specifies the UTC timezone.
 
 You can now add a participant to the session
@@ -97,6 +100,35 @@ Example output
 Notice the `entry_url` for the newly created participant. Following this url in a browser or in one of the coviu mobile
 between `start_time` and `end_time` (while the session is active), will join the participant into the session, assuming
 the role and identity provided.
+
+
+We can now read the entire session structure back
+```javascript
+api.sessions.getSession('09ef6778-3714-4dd6-91ec-d2868365c4ef').run().then(console.log).catch(console.error);
+```
+
+Example output
+```javascript
+{
+  team_id: '936c863f-ccff-4775-9011-cd17f4b5ad75',
+  client_id: '07c0fdbd-9089-4943-aa0b-2b01754f42e7',
+  session_id: '09ef6778-3714-4dd6-91ec-d2868365c4ef',
+  session_name: 'A test session with Dr. Who',
+  start_time: 'Wed, 08 Jun 2016 13:35:44 GMT',
+  end_time: 'Wed, 08 Jun 2016 13:45:44 GMT',
+  picture: 'http://www.fillmurray.com/200/300',
+  participants:[{
+    client_id: '07c0fdbd-9089-4943-aa0b-2b01754f42e7',
+    display_name: 'Dr. Who',
+    entry_url: 'https://coviu.com/session/e3c40e88-2b19-49bd-b687-1c08e4e0e124',
+    participant_id: 'e3c40e88-2b19-49bd-b687-1c08e4e0e124',
+    picture: 'http://fillmurray.com/200/300',
+    role: 'HOST',
+    session_id: '09ef6778-3714-4dd6-91ec-d2868365c4ef',
+    state: 'test-state'
+  }]
+}
+```
 
 There's a full set of api documents provided with api source for the `coviu-sdk-api` npm module at
 https://github.com/coviu/coviu-sdk-api/blob/master/libs/sessions.js
