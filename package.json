@@ -1,6 +1,6 @@
 {
   "name": "coviu-js-sdk",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Top level coviu api javascript client library",
   "main": "index.js",
   "scripts": {
@@ -19,6 +19,6 @@
   "dependencies": {
     "coviu-sdk-api": "^0.1.1",
     "coviu-sdk-http": "^1.2.0",
-    "coviu-sdk-oauth2": "^0.1.2"
+    "coviu-sdk-oauth2": "^1.0.0"
   }
 }
