@@ -4,8 +4,8 @@ coviu-js-sdk - The official Coviu API Javascipt client library
 
 Coviu provides a session based API for creating and restricting access to coviu calls. The core concepts exposed are
 
-Session: A coviu call that occurs between two or more parties at a specified time, and has a finite duration.
-Participants: Users who may participate in a coviu call.
+* Session: A coviu call that occurs between two or more parties at a specified time, and has a finite duration.
+* Participants: Users who may participate in a coviu call.
 
 Participants join a call by following a _session link_ in their browser, or mobile app. The _session link_
 identifies the participant, including their name, optional avatar, and importantly their _role_. As such,
