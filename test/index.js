@@ -114,12 +114,26 @@ describe('the coviu-js-sdk sesions api', function(){
       return coviu.sessions.getSession(session.session_id).run().then(function(session){
         assert(session.participants.length === 1);
       });
-    })
+    });
+  });
+
+  it('A removed participant may still be accessed by including the deleted_participants flag', function(){
+    return coviu.sessions.getSession(session.session_id).query({deleted_participants: true}).run()
+    .then(function(session){
+      assert(session.participants.length === 2);
+    });
   });
 
   it('can cancel a session', function(){
     return coviu.sessions.deleteSession(session.session_id).run().then(function(){
       return helpers.expectFailure(coviu.sessions.getSession(session.session_id).run());
-    })
+    });
+  });
+
+  it('A deleted session is still included in a session page result if the include_canceled flag is set', function(){
+    return coviu.sessions.getSessions({include_canceled: true}).run()
+    .then(function(sessions) {
+      assert(sessions.content.length >= 1);
+    });
   });
 });
