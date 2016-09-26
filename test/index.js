@@ -134,6 +134,15 @@ describe('the coviu-js-sdk sesions api', function(){
     return coviu.sessions.getSessions({include_canceled: true}).run()
     .then(function(sessions) {
       assert(sessions.content.length >= 1);
+      assert(sessions.content.reduce(function(c,v){return c && v.participants.length == 1;}, true));
+    });
+  });
+
+  it('Canceled sessions and deleted participants may be included with include_canceld and deleted_participants.', function(){
+    return coviu.sessions.getSessions({include_canceled: true, deleted_participants: true}).run()
+    .then(function(sessions) {
+      assert(sessions.content.length >= 1);
+      assert(sessions.content.reduce(function(c,v){return c && v.participants.length == 2;}, true));
     });
   });
 });
